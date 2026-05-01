@@ -1,6 +1,7 @@
 package com.P95.game_library.Controller;
 
 import com.P95.game_library.Model.Game;
+import com.P95.game_library.Model.GameStatus;
 import com.P95.game_library.Service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,11 @@ public class GameController {
 
     @GetMapping
     public List<Game> getAll() {
-        return gameService.listarjogos();
+        return gameService.listarJogos();
+    }
+
+    @GetMapping("/status/{status}")
+    public List<Game> getAllByStatus(@PathVariable GameStatus status) {
+        return gameService.listarJogosByStatus(status);
     }
 }
